@@ -10,10 +10,10 @@
         }
     },
     "firefox": {
-        "default": "47.0",
+        "default": "73.0",
         "versions": {
-            "47.0": {
-                "image": "selenoid/firefox:47.0",
+            "73.0": {
+                "image": "selenoid/chrome-mobile:73.0",
                 "port": "4444",
                 "path": "/wd/hub"
             }
