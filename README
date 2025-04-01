@@ -1,0 +1,83 @@
+Proje Yapısı
+Proje aşağıdaki gibi organize edilmiştir:
+sahibinden-ui-automation/
+├── src/
+│   ├── main/
+│   └── test/
+│       ├── java/
+│       │   ├── com.sahibinden.config/       # WebDriver ve Selenoid konfigürasyonu
+│       │   ├── com.sahibinden.pages/        # Page Object Model sınıfları
+│       │   └── com.sahibinden.tests/        # Test sınıfları
+│       └── resources/
+├── allure-report/                           # Allure raporlarının oluşturulduğu dizin
+├── config/                                  # Selenoid için tarayıcı konfigürasyonları (browsers.json)
+├── docker-compose.yaml                      # Docker Compose yapılandırma dosyası
+├── pom.xml                                  # Maven bağımlılıkları ve yapılandırma
+└── README.md                                # Proje dokümantasyonu
+
+Kullanılan Teknolojiler
+Programlama Dili: Java
+Test Framework: JUnit 5
+Raporlama Aracı: Allure
+Tarayıcı Yönetimi: Selenoid
+Bağımlılık Yönetimi: Maven
+Docker: Selenoid ve Jenkins için konteyner yönetimi
+
+Kurulum ve Çalıştırma Adımları
+1. Gereksinimler
+Java 17 veya üzeri
+Maven (Bağımlılık yönetimi için)
+Docker ve Docker Compose (Selenoid ve Jenkins için)
+Allure Commandline (Raporlama için)
+
+2. Projenin Klonlanması
+Proje deposunu yerel makinenize klonlayın:
+
+3. Bağımlılıkların Yüklenmesi
+Maven kullanarak proje bağımlılıklarını yükleyin:
+
+4. Docker Servislerini Başlatma
+docker-compose.yaml dosyasını kullanarak Selenoid, Selenoid-UI ve Jenkins servislerini başlatın:
+
+Docker Servisleri:
+Selenoid: http://localhost:4444
+Selenoid-UI: http://localhost:8081
+Jenkins: http://localhost:8080
+5. Testlerin Çalıştırılması
+Testleri çalıştırmak için aşağıdaki komutu kullanın:
+
+Test sonuçları allure-results dizininde oluşturulacaktır.
+
+6. Allure Raporlarının Oluşturulması
+Allure raporlarını oluşturmak ve görüntülemek için şu komutları çalıştırın:
+
+a. Raporu Geçici Olarak Görüntüleme
+b. Statik Rapor Oluşturma
+Raporlar allure-report dizininde oluşturulacaktır.
+
+Proje Detayları
+1. Testler
+Testler tests dizininde bulunur. Örnek bir test sınıfı:
+
+YepyPageTest.java: Yepy sayfasındaki fiyat sıralama ve filtreleme işlemlerini test eder.
+2. Page Object Model (POM)
+Sayfa nesneleri pages dizininde bulunur. Örnek:
+
+HomePage.java: Ana sayfa işlemleri.
+NewlyPhoneLandingPage.java: Yenilenmiş telefonlar sayfası işlemleri.
+3. Konfigürasyon
+WebDriverConfig.java: WebDriver ve Selenoid konfigürasyonu.
+browsers.json: Selenoid için tarayıcı yapılandırmaları.
+4. Docker Compose
+docker-compose.yaml dosyası, aşağıdaki servisleri içerir:
+
+Selenoid: Tarayıcı testlerini çalıştırır.
+Selenoid-UI: Selenoid için web arayüzü sağlar.
+Jenkins: CI/CD işlemleri için kullanılır.
+Kullanılan Docker İmajları
+Selenoid: aerokube/selenoid:latest-release
+Selenoid-UI: aerokube/selenoid-ui:latest-release
+Jenkins: jenkins/jenkins:lts
+Raporlama
+Allure: Test sonuçlarını görselleştirmek için kullanılır.
+Raporların Yolu: allure-results ve allure-report.

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  selenoid:
+    image: "aerokube/selenoid"
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - "./config/:/etc/selenoid/"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    network_mode: bridge
+    links:
+      - selenoid
+    ports:
+      - "8081:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
+
+  jenkins:
+    image: "jenkins/jenkins:lts"
+    network_mode: bridge
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    depends_on:
+      - selenoid
+
+volumes:
+  jenkins_home:

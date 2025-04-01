@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Tue Apr 01 11:25:52 UTC 2025","Tue Apr 01 11:25:55 UTC 2025","2865","","com.sahibinden.tests.HomePageTest","","com.sahibinden.tests.HomePageTest","testClickYepyLink","testClickYepyLink()","Test to verify that the Yepy link can be clicked successfully."
