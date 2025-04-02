@@ -1,83 +1,185 @@
-Proje Yapısı
-Proje aşağıdaki gibi organize edilmiştir:
-sahibinden-ui-automation/
-├── src/
-│   ├── main/
-│   └── test/
-│       ├── java/
-│       │   ├── com.sahibinden.config/       # WebDriver ve Selenoid konfigürasyonu
-│       │   ├── com.sahibinden.pages/        # Page Object Model sınıfları
-│       │   └── com.sahibinden.tests/        # Test sınıfları
-│       └── resources/
-├── allure-report/                           # Allure raporlarının oluşturulduğu dizin
-├── config/                                  # Selenoid için tarayıcı konfigürasyonları (browsers.json)
-├── docker-compose.yaml                      # Docker Compose yapılandırma dosyası
-├── pom.xml                                  # Maven bağımlılıkları ve yapılandırma
-└── README.md                                # Proje dokümantasyonu
+# Sahibinden UI Automation
 
-Kullanılan Teknolojiler
-Programlama Dili: Java
-Test Framework: JUnit 5
-Raporlama Aracı: Allure
-Tarayıcı Yönetimi: Selenoid
-Bağımlılık Yönetimi: Maven
-Docker: Selenoid ve Jenkins için konteyner yönetimi
+Bu proje, Sahibinden web uygulaması için UI testlerini otomatikleştirmek amacıyla oluşturulmuş bir otomasyon framework'üdür. Projede JUnit 5, Selenium, Allure ve Docker kullanılarak test süreçleri optimize edilmiştir.
 
-Kurulum ve Çalıştırma Adımları
-1. Gereksinimler
-Java 17 veya üzeri
-Maven (Bağımlılık yönetimi için)
-Docker ve Docker Compose (Selenoid ve Jenkins için)
-Allure Commandline (Raporlama için)
+## 📂 Proje Yapısı
 
-2. Projenin Klonlanması
-Proje deposunu yerel makinenize klonlayın:
+```
+├── sahibinden-ui-automation/
+│   ├── src/
+│   │   ├── main/
+│   │   └── test/
+│   │       ├── java/
+│   │       │   ├── com.sahibinden.config/       # WebDriver ve Selenoid konfigürasyonu
+│   │       │   ├── com.sahibinden.pages/        # Page Object Model sınıfları
+│   │       │   └── com.sahibinden.tests/        # Test sınıfları
+│   │       └── resources/
+│   ├── allure-report/                           # Allure raporlarının oluşturulduğu dizin
+│   ├── config/                                  # Selenoid için tarayıcı konfigürasyonları (browsers.json)
+│   ├── docker-compose.yaml                      # Docker Compose yapılandırma dosyası
+│   ├── pom.xml                                  # Maven bağımlılıkları ve yapılandırma
+│   └── README.md                                # Proje dokümantasyonu
+```
 
-3. Bağımlılıkların Yüklenmesi
-Maven kullanarak proje bağımlılıklarını yükleyin:
+🚀 Kullanılan Teknolojiler
 
-4. Docker Servislerini Başlatma
-docker-compose.yaml dosyasını kullanarak Selenoid, Selenoid-UI ve Jenkins servislerini başlatın:
+- sProgramlama Dili: Java 17+
+- Test Framework: JUnit 5
+- Otomasyon Aracı: Selenium WebDriver
+- Raporlama Aracı: Allure
+- Tarayıcı Yönetimi: Selenoid
+- Bağımlılık Yönetimi: Maven
+- CI/CD: Jenkins
+- Konteyner Yönetimi: Docker & Docker Compose
 
-Docker Servisleri:
-Selenoid: http://localhost:4444
-Selenoid-UI: http://localhost:8081
-Jenkins: http://localhost:8080
-5. Testlerin Çalıştırılması
-Testleri çalıştırmak için aşağıdaki komutu kullanın:
+---
 
-Test sonuçları allure-results dizininde oluşturulacaktır.
+🛠 Kurulum ve Çalıştırma Adımları
 
-6. Allure Raporlarının Oluşturulması
-Allure raporlarını oluşturmak ve görüntülemek için şu komutları çalıştırın:
+1️⃣ Gereksinimler
 
-a. Raporu Geçici Olarak Görüntüleme
-b. Statik Rapor Oluşturma
-Raporlar allure-report dizininde oluşturulacaktır.
+Projenin çalışması için aşağıdaki bağımlılıkların yüklü olması gerekmektedir:
 
-Proje Detayları
-1. Testler
-Testler tests dizininde bulunur. Örnek bir test sınıfı:
+- [Java 17](https://adoptium.net/)
+- [Maven](https://maven.apache.org/download.cgi)
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Allure Commandline](https://docs.qameta.io/allure/)
 
-YepyPageTest.java: Yepy sayfasındaki fiyat sıralama ve filtreleme işlemlerini test eder.
-2. Page Object Model (POM)
-Sayfa nesneleri pages dizininde bulunur. Örnek:
+---
 
-HomePage.java: Ana sayfa işlemleri.
-NewlyPhoneLandingPage.java: Yenilenmiş telefonlar sayfası işlemleri.
-3. Konfigürasyon
-WebDriverConfig.java: WebDriver ve Selenoid konfigürasyonu.
-browsers.json: Selenoid için tarayıcı yapılandırmaları.
-4. Docker Compose
+2️⃣ Projenin Klonlanması
+
+Öncelikle projeyi yerel makinenize klonlayın:
+
+git clone https://github.com/kullanici_adi/sahibinden-ui-automation.git
+cd sahibinden-ui-automation
+
+---
+
+3️⃣ Bağımlılıkların Yüklenmesi
+
+Maven kullanarak bağımlılıkları yükleyin:
+
+mvn clean install
+
+---
+
+4️⃣ Docker Servislerini Başlatma
+
+Selenoid ve Jenkins servislerini başlatmak için aşağıdaki komutu çalıştırın:
+
+docker-compose up -d
+
+Servislerin çalıştığını doğrulamak için:
+
+- Selenoid → [http://localhost:4444](http://localhost:4444)
+- Selenoid-UI → [http://localhost:8081](http://localhost:8081)
+- Jenkins → [http://localhost:8080](http://localhost:8080)
+
+---
+
+5️⃣ Testlerin Çalıştırılması
+
+Tüm testleri çalıştırmak için:
+
+- mvn test
+
+Belli bir test sınıfını çalıştırmak için:
+
+- mvn -Dtest=HomePageTest test
+
+Test sonuçları allure-results/ dizininde oluşturulacaktır.
+
+---
+
+6️⃣ Allure Raporlarının Oluşturulması
+
+📌 Geçici Olarak Raporu Görüntüleme
+
+allure serve allure-results
+
+📌 Statik Rapor Oluşturma
+
+allure generate allure-results -o allure-report --clean
+
+Raporlar allure-reports/ dizininde oluşturulacaktır.
+
+---
+
+📌 Proje Detayları
+
+✅ 1. Testler
+Testler `com.sahibinden.tests` paketi içinde bulunur.
+
+| **Test Sınıfı**       | **Açıklama** |
+|----------------------|-------------|
+| `HomePageTest.java`  | Ana sayfa işlemlerini test eder. |
+| `YepyPageTest.java`  | Yepy sayfasındaki fiyat sıralama ve filtreleme işlemlerini test eder. |
+| `LoginTest.java`     | Kullanıcı giriş işlemlerini test eder. |
+
+---
+
+✅ 2. Page Object Model (POM)
+Tüm sayfa nesneleri `com.sahibinden.pages` dizininde bulunur.
+
+| Sayfa Nesnesi    | Açıklama |
+|------------------|-------------|
+| `HomePage.java`  | Ana sayfa işlemleri |
+| `LoginPage.java` | Giriş işlemleri |
+| `SearchPage.java`| Arama işlemleri |
+
+---
+
+✅ 3. Konfigürasyon
+
+|   Dosya              | Açıklama    |
+|----------------------|-------------|
+| `WebDriverConfig.java` | WebDriver ve Selenoid yapılandırması |
+| `browsers.json`       | Selenoid için tarayıcı konfigürasyonları |
+
+---
+
+✅ 4. Docker Compose
+
 docker-compose.yaml dosyası, aşağıdaki servisleri içerir:
 
-Selenoid: Tarayıcı testlerini çalıştırır.
-Selenoid-UI: Selenoid için web arayüzü sağlar.
-Jenkins: CI/CD işlemleri için kullanılır.
-Kullanılan Docker İmajları
-Selenoid: aerokube/selenoid:latest-release
-Selenoid-UI: aerokube/selenoid-ui:latest-release
-Jenkins: jenkins/jenkins:lts
-Raporlama
-Allure: Test sonuçlarını görselleştirmek için kullanılır.
-Raporların Yolu: allure-results ve allure-report.
+|   Servis       |   Açıklama |
+|----------------|-------------|
+|   Selenoid     | Tarayıcı testlerini çalıştırır |
+|   Selenoid-UI  | Web arayüzü sağlar |
+|   Jenkins      | CI/CD işlemleri için |
+
+---
+
+✅ 5. Kullanılan Docker İmajları
+
+| Servis         |   Docker İmajı |
+|----------------|----------------|
+|   Selenoid     | `aerokube/selenoid:latest-release` |
+|   Selenoid-UI  | `aerokube/selenoid-ui:latest-release` |
+|   Jenkins      | `jenkins/jenkins:lts` |
+
+---
+
+📊 Raporlama
+
+Allure test sonuçlarını görselleştirmek için kullanılır.
+
+|   Klasör         |   Açıklama  |
+|------------------|-------------|
+| `allure-results/` | Test sonuçlarının ham verileri |
+| `allure-report/`  | Statik HTML raporları |
+
+---
+
+📌 Katkıda Bulunma
+Projeye katkıda bulunmak için lütfen bir **Pull Request (PR)** oluşturun.
+
+- Hata Bildirme:** Issue açabilirsiniz.
+- Yeni Özellik Önerisi:** PR göndermeden önce tartışma için issue açabilirsiniz.
+
+---
+
+📧 İletişim için: furkanece99@gmail.com
+
