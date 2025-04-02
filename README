@@ -1,25 +1,35 @@
-# Sahibinden UI Automation
+Sahibinden UI Automation
 
 Bu proje, Sahibinden web uygulaması için UI testlerini otomatikleştirmek amacıyla oluşturulmuş bir otomasyon framework'üdür. Projede JUnit 5, Selenium, Allure ve Docker kullanılarak test süreçleri optimize edilmiştir.
 
-## 📂 Proje Yapısı
+📂 Proje Yapısı
 
-```
-├── sahibinden-ui-automation/
-│   ├── src/
-│   │   ├── main/
-│   │   └── test/
-│   │       ├── java/
-│   │       │   ├── com.sahibinden.config/       # WebDriver ve Selenoid konfigürasyonu
-│   │       │   ├── com.sahibinden.pages/        # Page Object Model sınıfları
-│   │       │   └── com.sahibinden.tests/        # Test sınıfları
-│   │       └── resources/
-│   ├── allure-report/                           # Allure raporlarının oluşturulduğu dizin
-│   ├── config/                                  # Selenoid için tarayıcı konfigürasyonları (browsers.json)
-│   ├── docker-compose.yaml                      # Docker Compose yapılandırma dosyası
-│   ├── pom.xml                                  # Maven bağımlılıkları ve yapılandırma
-│   └── README.md                                # Proje dokümantasyonu
-```
+
+sahibinden-ui-automation/
+├── src/
+│   ├── main/
+│   │   ├── resources/                          # Uygulama kaynak dosyaları
+│   └── test/
+│       ├── java/
+│       │   ├── com.sahibinden.config/         # WebDriver ve Selenoid konfigürasyonu
+│       │   ├── com.sahibinden.pages/          # Page Object Model sınıfları
+│       │   ├── com.sahibinden.tests/          # Test sınıfları
+│       │   ├── com.sahibinden.base/           # Temel yapı ve yardımcı sınıflar
+│       └── resources/                         # Test kaynak dosyaları
+├── allure-report/                             # Allure raporlarının oluşturulduğu dizin
+├── allure-results/                            # Allure test sonuçlarının tutulduğu dizin
+├── config/                                    # Selenoid için tarayıcı konfigürasyonları (browsers.json)
+├── .mvn/                                      # Maven Wrapper için gerekli dosyalar
+├── .gitattributes                             # Git için dosya özellikleri ayarları
+├── .gitignore                                 # Git tarafından yok sayılacak dosyalar
+├── DockerFile                                 # Docker imajını oluşturmak için yapılandırma dosyası
+├── Jenkinsfile                                # Jenkins pipeline yapılandırma dosyası
+├── docker-compose.yaml                        # Docker Compose yapılandırma dosyası
+├── mvnw                                       # Maven Wrapper (Linux/Mac)
+├── mvnw.cmd                                   # Maven Wrapper (Windows)
+├── pom.xml                                    # Maven bağımlılıkları ve yapılandırma
+└── README.md                                  # Proje dokümantasyonu
+
 
 🚀 Kullanılan Teknolojiler
 
@@ -87,7 +97,7 @@ Tüm testleri çalıştırmak için:
 
 Belli bir test sınıfını çalıştırmak için:
 
-- mvn -Dtest=HomePageTest test
+- mvn -Dtest=LandingPageTest test
 
 Test sonuçları allure-results/ dizininde oluşturulacaktır.
 
@@ -112,11 +122,10 @@ Raporlar allure-reports/ dizininde oluşturulacaktır.
 ✅ 1. Testler
 Testler `com.sahibinden.tests` paketi içinde bulunur.
 
-| **Test Sınıfı**       | **Açıklama** |
+|   Test Sınıfı        |  Açıklama   |
 |----------------------|-------------|
-| `HomePageTest.java`  | Ana sayfa işlemlerini test eder. |
-| `YepyPageTest.java`  | Yepy sayfasındaki fiyat sıralama ve filtreleme işlemlerini test eder. |
-| `LoginTest.java`     | Kullanıcı giriş işlemlerini test eder. |
+| `LandingPageTest.java`  | Landing Page sayfasındaki fiyat sıralama ve filtreleme işlemlerini test eder. |
+| `YepyPageTest.java`  | Yepy sayfasını test eder. |
 
 ---
 
@@ -126,8 +135,8 @@ Tüm sayfa nesneleri `com.sahibinden.pages` dizininde bulunur.
 | Sayfa Nesnesi    | Açıklama |
 |------------------|-------------|
 | `HomePage.java`  | Ana sayfa işlemleri |
-| `LoginPage.java` | Giriş işlemleri |
-| `SearchPage.java`| Arama işlemleri |
+| `NewlyPhoneLandingPage.java` | Yenilenmiş Telefon sayfası işlemleri |
+| `YepyPage.java`| Yepy sayfası işlemleri |
 
 ---
 
